@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Next Blood Moon Tracker</title>
+</head>
+<body>
+
+    <h1>Next Blood Moon Countdown</h1>
+        <h1>🌕 Next Blood Moon (Total Lunar Eclipse)</h1>
+  <p><a href="index.html">Go back to index</a></p>
+  <p>This is a area in my website to see when the next blood moon is to see if "! Gemmie🌻" (instagram: gemmie_wow, report to me if i'm wrong!) will release her next animation <br>(as she said she animates once every blood moon)</p>
+ 
+    <p>A Blood Moon occurs during a Total Lunar Eclipse.</p>
+    
+    <hr>
+
+    <div id="countdown-container">
+        <h2>The next Blood Moon is on:</h2>
+        <h3 id="event-date">Loading...</h3>
+        <p id="time-remaining"></p>
+    </div>
+
+    <script>
+        // List of upcoming Total Lunar Eclipses (Blood Moons)
+        // Dates sourced from NASA Eclipse data
+        const bloodMoons = [
+            "2025-03-14T06:58:00Z",
+            "2025-09-07T18:11:00Z",
+            "2026-03-03T11:33:00Z",
+            "2028-12-31T16:52:00Z",
+            "2029-06-26T03:22:00Z"
+        ];
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            let nextDate = null;
+
+            // Find the first date in the array that is in the future
+            for (let dateStr of bloodMoons) {
+                const eventTime = new Date(dateStr).getTime();
+                if (eventTime > now) {
+                    nextDate = eventTime;
+                    document.getElementById("event-date").innerText = new Date(dateStr).toLocaleString();
+                    break;
+                }
+            }
+
+            if (nextDate) {
+                const distance = nextDate - now;
+
+                // Math for days, hours, minutes, seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("time-remaining").innerText = 
+                    `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                document.getElementById("event-date").innerText = "No upcoming dates in database.";
+            }
+        }
+
+        // Update the clock every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+</body>
+</html>
