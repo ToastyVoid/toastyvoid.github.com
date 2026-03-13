@@ -1,113 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next Blood Moon Tracker</title>
 </head>
 <body>
-    <h1>🌕 Next Blood Moon (Total Lunar Eclipse)</h1>
-  <p><a href="../index.html">Go back to index</a></p>
+
+    <h1>Next Blood Moon Countdown</h1>
+        <h1>🌕 Next Blood Moon (Total Lunar Eclipse)</h1>
+  <p><a href="index.html">Go back to index</a></p>
   <p>This is a area in my website to see when the next blood moon is to see if "! Gemmie🌻" (instagram: gemmie_wow, report to me if i'm wrong!) will release her next animation <br>(as she said she animates once every blood moon)</p>
+ 
+    <p>A Blood Moon occurs during a Total Lunar Eclipse.</p>
     
-    <div id="bloodMoonInfo">
-        <p>Loading blood moon data...</p>
+    <hr>
+
+    <div id="countdown-container">
+        <h2>The next Blood Moon is on:</h2>
+        <h3 id="event-date">Loading...</h3>
+        <p id="time-remaining"></p>
     </div>
 
     <script>
-        // Known upcoming total lunar eclipses (blood moons)
-        // Source: NASA Eclipse Data
+        // List of upcoming Total Lunar Eclipses (Blood Moons)
+        // Dates sourced from NASA Eclipse data
         const bloodMoons = [
-            {
-                date: '2025-03-14',
-                time: '06:59 UTC',
-                description: 'Visible from: Americas, Western Europe, Western Africa'
-            },
-            {
-                date: '2025-09-07',
-                time: '18:12 UTC',
-                description: 'Visible from: Europe, Africa, Asia, Australia'
-            },
-            {
-                date: '2026-03-03',
-                time: '11:34 UTC',
-                description: 'Visible from: Eastern Asia, Australia, Pacific, Americas'
-            }
+            "2025-03-14T06:58:00Z",
+            "2025-09-07T18:11:00Z",
+            "2026-03-03T11:33:00Z",
+            "2028-12-31T16:52:00Z",
+            "2029-06-26T03:22:00Z"
         ];
 
-        function calculateNextBloodMoon() {
-            const now = new Date();
-            const upcomingEclipses = [];
+        function updateCountdown() {
+            const now = new Date().getTime();
+            let nextDate = null;
 
-            // Convert blood moon dates to Date objects and find future ones
-            for (let eclipse of bloodMoons) {
-                const eclipseDate = new Date(eclipse.date + 'T' + eclipse.time);
-                
-                if (eclipseDate > now) {
-                    upcomingEclipses.push({
-                        ...eclipse,
-                        dateObj: eclipseDate
-                    });
+            // Find the first date in the array that is in the future
+            for (let dateStr of bloodMoons) {
+                const eventTime = new Date(dateStr).getTime();
+                if (eventTime > now) {
+                    nextDate = eventTime;
+                    document.getElementById("event-date").innerText = new Date(dateStr).toLocaleString();
+                    break;
                 }
             }
 
-            // Sort by date (closest first)
-            upcomingEclipses.sort((a, b) => a.dateObj - b.dateObj);
+            if (nextDate) {
+                const distance = nextDate - now;
 
-            const infoDiv = document.getElementById('bloodMoonInfo');
-            
-            if (upcomingEclipses.length > 0) {
-                const next = upcomingEclipses[0];
-                const timeDiff = next.dateObj - now;
-                const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-                const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                
-                // Format the date nicely
-                const options = { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    timeZoneName: 'short'
-                };
-                
-                const formattedDate = next.dateObj.toLocaleDateString('en-US', options);
-                
-                infoDiv.innerHTML = `
-                    <h2>🌋 The next blood moon is on:</h2>
-                    <p style="font-size: 24px; color: darkred;">
-                        <strong>${formattedDate}</strong>
-                    </p>
-                    <p>⏰ Time until event: <strong>${daysLeft} days, ${hoursLeft} hours</strong></p>
-                    <p>📍 ${next.description}</p>
-                    <hr>
-                    <h3>Future blood moons:</h3>
-                    <ul>
-                        ${upcomingEclipses.map(eclipse => `
-                            <li>
-                                <strong>${eclipse.dateObj.toLocaleDateString('en-US', { 
-                                    year: 'numeric', 
-                                    month: 'long', 
-                                    day: 'numeric' 
-                                })}</strong> - ${eclipse.description}
-                            </li>
-                        `).join('')}
-                    </ul>
-                `;
+                // Math for days, hours, minutes, seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("time-remaining").innerText = 
+                    `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
             } else {
-                infoDiv.innerHTML = '<p>No upcoming blood moons found in our database. Check back later for updates!</p>';
+                document.getElementById("event-date").innerText = "No upcoming dates in database.";
             }
         }
 
-        // Calculate initially
-        calculateNextBloodMoon();
-
-        // Update every hour to keep the countdown accurate
-        setInterval(calculateNextBloodMoon, 3600000); // 3600000 ms = 1 hour
+        // Update the clock every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
-    
-    <p><small>Note: Blood moons (total lunar eclipses) are predictable astronomical events. Data sourced from NASA eclipse bulletins. Times are in UTC.</small></p>
+
 </body>
 </html>
