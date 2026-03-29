@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day or Night Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #87CEEB, #f0f8ff);
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .day {
+      color: #FFA500;
+    }
+    .night {
+      color: #1E90FF;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌍 Day or Night Checker</h1>
+  <p>Select a country to see if it’s day or night there:</p>
+
+  <select id="country">
+    <option value="Asia/Kolkata">India</option>
+    <option value="Europe/London">United Kingdom</option>
+    <option value="America/New_York">United States (New York)</option>
+    <option value="Asia/Tokyo">Japan</option>
+    <option value="Australia/Sydney">Australia (Sydney)</option>
+  </select>
+  <button onclick="checkDayNight()">Check</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function checkDayNight() {
+      const country = document.getElementById("country").value;
+      const response = await fetch(`https://worldtimeapi.org/api/timezone/${country}`);
+      const data = await response.json();
+      const dateTime = new Date(data.datetime);
+      const hour = dateTime.getHours();
+
+      let resultText = "";
+      if (hour >= 6 && hour < 18) {
+        resultText = "☀️ It’s Daytime!";
+        document.getElementById("result").className = "day";
+      } else {
+        resultText = "🌙 It’s Nighttime!";
+        document.getElementById("result").className = "night";
+      }
+
+      document.getElementById("result").innerText = 
+        `${data.timezone}: ${dateTime.toLocaleTimeString()} → ${resultText}`;
+    }
+  </script>
+</body>
+</html>
