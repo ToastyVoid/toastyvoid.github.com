@@ -1,0 +1,39 @@
+/* GeoCities-inspired CSS */
+
+body {
+  background-color: #0000aa; /* Bright blue background */
+  color: #ffff00; /* Neon yellow text */
+  font-family: "Comic Sans MS", "Courier New", cursive; /* Classic GeoCities vibe */
+  text-align: center;
+}
+
+h1, h2, h3 {
+  color: #ff00ff; /* Hot pink headers */
+  text-shadow: 2px 2px #00ff00; /* Neon green shadow */
+}
+
+a {
+  color: #00ffff; /* Cyan links */
+  text-decoration: blink; /* Old-school blink (not supported anymore, but fun to include) */
+}
+
+marquee {
+  font-size: 20px;
+  color: #ff0000;
+  background-color: #ffff00;
+  font-weight: bold;
+}
+
+img {
+  border: 5px ridge #ff00ff; /* Chunky borders around images */
+}
+
+hr {
+  border: 3px dashed #00ff00; /* Funky horizontal rules */
+}
+
+.container {
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-repeat: repeat;
+  padding: 20px;
+}
