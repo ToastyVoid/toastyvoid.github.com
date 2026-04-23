@@ -1,72 +1,117 @@
 <!DOCTYPE html>
+
 <html>
- <head>
- <title>Learn GDScript Like It Is 1999!</title>
- <link rel="stylesheet" href="assets/style.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
- <script src="path/to/gdscript.min.js"></script>
- <script>
- hljs.registerLanguage('gdscript', window.hljsDefineGDScript);
- hljs.highlightAll();
- </script>
- </head>
- <body>
- <h1>Donate to me!</h1>
- <h1>Learn GDScript Like It Is 1999!</h1>
- <img src="assets/constructgif1.gif" alt="under construction 1">
- <img src="assets/constructgif2.gif" alt="under construction 2">
+  <body bgcolor="black" text="lime" link="cyan" vlink="magenta">
 
- <p>Welcome to the most RADICAL GDScript guide on the web! Forget boring modern tutorials - this is pure retro learning.</p>
+```
+<h1>Learn GDScript</h1>
 
- <h2> Lesson 1: Hello World</h2>
- <p>Every language starts with printing text. In GDScript, you do it like this:</p>
- <pre><code class="gdscript">
-func _ready():
- print("Hello World from 1999!")
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+<script src="path/to/gdscript.min.js"></script>
+
+<script>
+  hljs.registerLanguage('gdscript', window.hljsDefineGDScript);
+  hljs.highlightAll();
+</script>
+
+<marquee>🔥 WELCOME TO THE ULTIMATE GDSCRIPT ZONE 🔥 BEST VIEWED ON INTERNET EXPLORER 🔥</marquee>
+
+<h1>Learn GDScript like it is 1999!</h1>
+
+<img src="assets/constructgif1.gif">
+<img src="assets/constructgif2.gif">
+
+<p>Have you EVER wanted to LEARN GDSCRIPT BUT SUCK AT IT AND PROBABLY WANT TO LEARN IT?</p>
+<p>GOOD. YOU ARE IN THE RIGHT PLACE.</p>
+
+<hr>
+
+<h2>📦 LESSON 1: MAGIC BOXES (variables)</h2>
+<p>Variables store stuff. Like your feelings. But more useful.</p>
+```
+
+<pre><code class="language-gdscript">
+var player_name = "CoolDude99"
+var hp = 100
 </code></pre>
 
- <h2> Lesson 2: Moving a Player</h2>
- <p>Games are about movement! Here's how you move a sprite with arrow keys:</p>
- <pre><code class="gdscript">
-extends Sprite
+```
+<p>BOOM. You just made data exist.</p>
+
+<hr>
+
+<h2>🔁 LESSON 2: INFINITE LOOPS OF DOOM</h2>
+<p>Loops repeat things. Like your bad decisions.</p>
+```
+
+<pre><code class="language-gdscript">
+for i in range(5):
+    print("HELLO FROM THE LOOP", i)
+</code></pre>
+
+```
+<p>If this runs forever, congratulations, you broke reality.</p>
+
+<hr>
+
+<h2>⚙️ LESSON 3: FUNCTIONS (SPELLS)</h2>
+<p>Functions are reusable magic spells.</p>
+```
+
+<pre><code class="language-gdscript">
+func say_hello():
+    print("HELLO PLAYER")
+
+say_hello()
+</code></pre>
+
+```
+<p>You are now a wizard.</p>
+
+<hr>
+
+<h2>🎮 LESSON 4: MOVING A PLAYER (REAL STUFF!!)</h2>
+```
+
+<pre><code class="language-gdscript">
+extends CharacterBody2D
 
 var speed = 200
 
-func _process(delta):
- if Input.isactionpressed("ui_right"):
- position.x += speed * delta
- if Input.isactionpressed("ui_left"):
- position.x -= speed * delta
- if Input.isactionpressed("ui_down"):
- position.y += speed * delta
- if Input.isactionpressed("ui_up"):
- position.y -= speed * delta
+func _physics_process(delta):
+    var direction = Input.get_axis("ui_left", "ui_right")
+    velocity.x = direction * speed
+    move_and_slide()
 </code></pre>
 
- <h2> Lesson 3: Signals</h2>
- <p>Signals are like old-school walkie-talkies between nodes. Example: when a button is pressed, tell another node:</p>
- <pre><code class="gdscript">
-extends Button
+```
+<p>This is REAL. You are basically making a game now.</p>
 
-func _ready():
- connect("pressed", self, "onbutton_pressed")
+<hr>
 
-func onbutton_pressed():
- print("Button pressed! Radical!")
-</code></pre>
+<h2>⚠️ COMMON MISTAKES (YOU WILL DO THESE)</h2>
+<ul>
+  <li>Forgetting indentation → EVERYTHING BREAKS</li>
+  <li>Using tabs and spaces → CHAOS</li>
+  <li>Typos → enjoy debugging for 2 hours</li>
+</ul>
 
- <h2> Lesson 4: Variables</h2>
- <p>Variables are your memory slots. Store numbers, text, or even nodes:</p>
- <pre><code class="gdscript">
-var score = 0
-var player_name = "Neo"
-var is_alive = true
-</code></pre>
+<hr>
 
- <h2> Next Steps</h2>
- <p>Keep exploring! Add enemies, score counters, and explosions. Remember: every great game starts with small steps.</p>
+<h2>🧠 PRO TIP (SECRET KNOWLEDGE)</h2>
+<p>GDScript is close to Python, but NOT Python.</p>
+<p>Respect its differences or suffer.</p>
 
- <marquee> This guide is TOTALLY under construction </marquee>
- </body>
+<hr>
+
+<marquee>✨ YOU ARE NOW 10% GAME DEV ✨ KEEP GOING ✨</marquee>
+
+<p><a href="#">NEXT PAGE (UNDER CONSTRUCTION)</a></p>
+
+<img src="assets/construction_bar.gif">
+```
+
+  </body>
 </html>
