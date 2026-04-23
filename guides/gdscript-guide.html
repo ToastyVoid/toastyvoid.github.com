@@ -1,19 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <h1>Donate to me!</h1>
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
-    <script src="path/to/gdscript.min.js"></script>
-    <script>
-      hljs.registerLanguage('gdscript', window.hljsDefineGDScript);
-      hljs.highlightAll();
-    </script>
-    <h1>Learn GDScrip like it is 1999!</h1>
-    <img src="assets/constructgif1.gif" alt="under construction 1">
-    <img src="assets/constructgif2.gif" alt="under-construction 2">
-    <p>Have you EVER wanted to LEARN GDSCRIPT BUT SUCK AT IT AND PROBABLY WANT TO LEARN IT?</p>
-    
-  </body>
+ <head>
+ <title>Learn GDScript Like It Is 1999!</title>
+ <link rel="stylesheet" href="assets/style.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+ <script src="path/to/gdscript.min.js"></script>
+ <script>
+ hljs.registerLanguage('gdscript', window.hljsDefineGDScript);
+ hljs.highlightAll();
+ </script>
+ </head>
+ <body>
+ <h1>Donate to me!</h1>
+ <h1>Learn GDScript Like It Is 1999!</h1>
+ <img src="assets/constructgif1.gif" alt="under construction 1">
+ <img src="assets/constructgif2.gif" alt="under construction 2">
+
+ <p>Welcome to the most RADICAL GDScript guide on the web! Forget boring modern tutorials - this is pure retro learning.</p>
+
+ <h2> Lesson 1: Hello World</h2>
+ <p>Every language starts with printing text. In GDScript, you do it like this:</p>
+ <pre><code class="gdscript">
+func _ready():
+ print("Hello World from 1999!")
+</code></pre>
+
+ <h2> Lesson 2: Moving a Player</h2>
+ <p>Games are about movement! Here's how you move a sprite with arrow keys:</p>
+ <pre><code class="gdscript">
+extends Sprite
+
+var speed = 200
+
+func _process(delta):
+ if Input.isactionpressed("ui_right"):
+ position.x += speed * delta
+ if Input.isactionpressed("ui_left"):
+ position.x -= speed * delta
+ if Input.isactionpressed("ui_down"):
+ position.y += speed * delta
+ if Input.isactionpressed("ui_up"):
+ position.y -= speed * delta
+</code></pre>
+
+ <h2> Lesson 3: Signals</h2>
+ <p>Signals are like old-school walkie-talkies between nodes. Example: when a button is pressed, tell another node:</p>
+ <pre><code class="gdscript">
+extends Button
+
+func _ready():
+ connect("pressed", self, "onbutton_pressed")
+
+func onbutton_pressed():
+ print("Button pressed! Radical!")
+</code></pre>
+
+ <h2> Lesson 4: Variables</h2>
+ <p>Variables are your memory slots. Store numbers, text, or even nodes:</p>
+ <pre><code class="gdscript">
+var score = 0
+var player_name = "Neo"
+var is_alive = true
+</code></pre>
+
+ <h2> Next Steps</h2>
+ <p>Keep exploring! Add enemies, score counters, and explosions. Remember: every great game starts with small steps.</p>
+
+ <marquee> This guide is TOTALLY under construction </marquee>
+ </body>
 </html>
