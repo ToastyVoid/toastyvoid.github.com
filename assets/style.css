@@ -45,3 +45,10 @@ hr {
   width: 200px;  /* adjust size */
   height: auto;
 }
+
+.mascot-text {
+  right: 20px;
+  bottom: 20px;
+  width: 200px;
+  height: auto;
+}
