@@ -37,3 +37,11 @@ hr {
   background-repeat: repeat;
   padding: 20px;
 }
+
+.mascot {
+  position: fixed;
+  right: 20px;   /* distance from the right edge */
+  bottom: 20px;  /* distance from the bottom */
+  width: 200px;  /* adjust size */
+  height: auto;
+}
