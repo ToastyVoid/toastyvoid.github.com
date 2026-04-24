@@ -47,8 +47,10 @@ hr {
 }
 
 .mascot-text {
-  right: 20px;
-  bottom: 20px;
-  width: 200px;
-  height: auto;
+  position: fixed;   /* Keeps it in place even when scrolling */
+  bottom: 10px;      /* Distance from the bottom */
+  right: 10px;       /* Distance from the right */
+  background-color: lightgray; /* Optional styling */
+  padding: 8px;
+  border-radius: 5px;
 }
